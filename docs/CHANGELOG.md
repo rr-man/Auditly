@@ -3,6 +3,14 @@
 All notable changes to Auditly (built as L1 Support QA). Format follows Keep a Changelog.
 The top entry's version is what the app shows in its version chip.
 
+## [0.63.2] - 2026-09-22
+
+### Added
+- **MIT licence.** `LICENSE` (Copyright (c) 2026 COEO (SNET Connect) — Ron Mangune and contributors) and
+  `THIRD_PARTY_NOTICES.md` — Mermaid 11.4.1 under its own MIT notice, the COEO logo as the company's
+  trademark artwork outside the code grant, and a statement that the sample data is fictional. The README
+  points at both; the repository-hygiene tests check they are present.
+
 ## [0.63.1] - 2026-09-22
 
 ### Changed

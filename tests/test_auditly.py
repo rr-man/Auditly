@@ -511,6 +511,11 @@ def run(tmp, env):
                 if "abcdefghijklmnopqrstuvwxyz1234" in m.group(0): continue     # the fake key this file uses
                 leaks.append((os.path.relpath(f, ROOT), m.group(0)[:40]))
     check("repository hygiene: no committable file carries a key-shaped string, an internal hostname, a LAN address or a home path", not leaks, leaks[:6])
+    lic = open(os.path.join(ROOT, "LICENSE"), encoding="utf-8").read() if os.path.exists(os.path.join(ROOT, "LICENSE")) else ""
+    tpn = open(os.path.join(ROOT, "THIRD_PARTY_NOTICES.md"), encoding="utf-8").read() if os.path.exists(os.path.join(ROOT, "THIRD_PARTY_NOTICES.md")) else ""
+    check("licence: MIT with the agreed copyright line, and the third-party notices name Mermaid under MIT (0.63.2)",
+          lic.startswith("MIT License") and "Copyright (c) 2026 COEO (SNET Connect) — Ron Mangune and contributors" in lic
+          and "Mermaid" in tpn and "MIT" in tpn and "mermaid.min.js" in tpn and "LICENSE" in readme_txt and "THIRD_PARTY_NOTICES.md" in readme_txt)
     gi = open(os.path.join(ROOT, ".gitignore"), encoding="utf-8").read()
     check("repository hygiene: .gitignore keeps the keys, the databases, the recordings, the certificate and the logs out -- including the two stray names",
           all(p_ in gi for p_ in (".env", "!.env.example", "*.db", "uploads/", "/uploads*/", "/auditly*.db*", "tls/", "*.key", "*.log", "__pycache__/")))

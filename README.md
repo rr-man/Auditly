@@ -1,6 +1,6 @@
 # Auditly
 
-**Version:** 0.63.1 · 2026-09-22
+**Version:** 0.63.2 · 2026-09-22
 
 An internal tool for the Level 1 support QA team. A reviewer uploads a call
 recording; the tool transcribes it (Deepgram or OpenAI), scores it against the
@@ -201,3 +201,8 @@ python3 tests/test_auditly.py
 ```
 
 See `docs/VERIFY.md` for the browser walk-through.
+
+## Licence
+
+MIT — see [`LICENSE`](LICENSE). Copyright (c) 2026 COEO (SNET Connect) — Ron Mangune and contributors.
+The vendored Mermaid library and the artwork are listed in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
