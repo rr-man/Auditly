@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1685.21 504.2" width="1685.21" height="504.2" fill-rule="evenodd" role="img" aria-label="COEO animated logo">
+<title>COEO</title>
+<defs>
+<style>@keyframes inE{0%,12.903%{opacity:0;transform:scale(.96);animation-timing-function:cubic-bezier(.16,.84,.44,1)}28.226%,100%{opacity:1;transform:scale(1)}}
+@keyframes inO2{0%,15.323%{opacity:0;transform:scale(.96);animation-timing-function:cubic-bezier(.16,.84,.44,1)}30.645%,100%{opacity:1;transform:scale(1)}}
+@keyframes inO1{0%,10.484%{opacity:0;transform:scale(.96);animation-timing-function:cubic-bezier(.16,.84,.44,1)}25.806%,100%{opacity:1;transform:scale(1)}}
+@keyframes inC{0%,8.065%{opacity:0;transform:scale(.96);animation-timing-function:cubic-bezier(.16,.84,.44,1)}23.387%,100%{opacity:1;transform:scale(1)}}
+@keyframes drawWire{0%,29.032%{stroke-dashoffset:1136.5;animation-timing-function:cubic-bezier(.42,0,.30,1)}51.613%,100%{stroke-dashoffset:0}}
+@keyframes runPulse{0%,29.032%{stroke-dashoffset:90;animation-timing-function:cubic-bezier(.42,0,.30,1)}51.613%,100%{stroke-dashoffset:-1136.5}}
+@keyframes fadePulse{0%,29.032%{opacity:0}31.742%,48.903%{opacity:1}51.613%,100%{opacity:0}}
+@keyframes inNode0{0%,26.774%{opacity:0;transform:scale(.4);animation-timing-function:cubic-bezier(.2,.9,.3,1)}29.032%,100%{opacity:1;transform:scale(1)}}
+@keyframes inNode1{0%,49.355%{opacity:0;transform:scale(.4);animation-timing-function:cubic-bezier(.2,.9,.3,1)}51.613%,100%{opacity:1;transform:scale(1)}}
+@keyframes gl0{0%{opacity:0;transform:scale(0.7);animation-timing-function:steps(1,end)}29.032%{opacity:0.38;transform:scale(0.7);animation-timing-function:cubic-bezier(.2,.7,.3,1)}33.871%,100%{opacity:0;transform:scale(1.9)}}
+@keyframes r10{0%{opacity:0;transform:scale(1.0);animation-timing-function:steps(1,end)}29.032%{opacity:0.5;transform:scale(1.0);animation-timing-function:cubic-bezier(.2,.7,.3,1)}34.194%,100%{opacity:0;transform:scale(2.0)}}
+@keyframes lt0{0%,29.032%{opacity:0}29.535%,31.339%{opacity:0.9}33.226%,100%{opacity:0}}
+@keyframes gl1{0%{opacity:0;transform:scale(0.7);animation-timing-function:steps(1,end)}51.613%{opacity:0.6;transform:scale(0.7);animation-timing-function:cubic-bezier(.2,.7,.3,1)}57.419%,100%{opacity:0;transform:scale(2.6)}}
+@keyframes r11{0%{opacity:0;transform:scale(1.0);animation-timing-function:steps(1,end)}51.613%{opacity:0.75;transform:scale(1.0);animation-timing-function:cubic-bezier(.2,.7,.3,1)}57.742%,100%{opacity:0;transform:scale(2.8)}}
+@keyframes r21{0%{opacity:0;transform:scale(1.0);animation-timing-function:steps(1,end)}53.065%{opacity:0.5;transform:scale(1.0);animation-timing-function:cubic-bezier(.2,.7,.3,1)}58.226%,100%{opacity:0;transform:scale(2.1)}}
+@keyframes lt1{0%,51.613%{opacity:0}52.232%,54.452%{opacity:1.0}56.774%,100%{opacity:0}}
+@keyframes runSweep{0%,56.452%{transform:translateX(-900px);opacity:0;animation-timing-function:cubic-bezier(.36,.1,.4,1)}59.839%{opacity:1}75.323%{opacity:1}80.645%,100%{transform:translateX(3200px);opacity:0}}
+.ltr,.node,.wire,.pulse,.pulseFade,.sweep,.fl,.lt{animation-duration:6.2s;animation-iteration-count:infinite;animation-fill-mode:both}
+.ltr,.node,.fl{transform-box:view-box}
+.fl,.lt{opacity:0}
+.wire{stroke-dasharray:1136.5;animation-name:drawWire}
+.pulse{stroke-dasharray:90 2000;animation-name:runPulse}
+.pulseFade{animation-name:fadePulse}
+.sweep{animation-name:runSweep}
+.lE{animation-name:inE;transform-origin:1037.54px 252.1px}
+.lO2{animation-name:inO2;transform-origin:1433.11px 252.1px}
+.lO1{animation-name:inO1;transform-origin:646.51px 252.1px}
+.lC{animation-name:inC;transform-origin:252.1px 252.1px}
+.n0{animation-name:inNode0;transform-origin:474.46px 252.1px}
+.gl0{animation-name:gl0;transform-origin:474.46px 252.1px}
+.r10{animation-name:r10;transform-origin:474.46px 252.1px}
+.lt0{animation-name:lt0}
+.n1{animation-name:inNode1;transform-origin:1609.96px 252.1px}
+.gl1{animation-name:gl1;transform-origin:1609.96px 252.1px}
+.r11{animation-name:r11;transform-origin:1609.96px 252.1px}
+.r21{animation-name:r21;transform-origin:1609.96px 252.1px}
+.lt1{animation-name:lt1}
+@media (prefers-reduced-motion: reduce){.ltr,.node{animation:none;opacity:1;transform:none}.wire{animation:none;stroke-dashoffset:0}.pulse,.pulseFade,.sweep,.fl,.lt{display:none}}</style>
+<radialGradient id="bloom"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".85"/><stop offset=".45" stop-color="#FFFFFF" stop-opacity=".34"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient><linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="0.26" stop-color="#0B1728" stop-opacity="0.34"/><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="1.0"/><stop offset="0.72" stop-color="#0B1728" stop-opacity="0.2"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+<path id="pC" d="M482.62,171.82 A244.1,244.1 0 1 0 485.58,323.32 L346.83,323.32 A118.52,118.52 0 1 1 339.29,171.82 Z"/><path id="pO1" d="M402.41,252.1 a244.1,244.1 0 1 0 488.2,0 a244.1,244.1 0 1 0 -488.2,0 Z M527.99,252.1 a118.52,118.52 0 1 0 237.04,0 a118.52,118.52 0 1 0 -237.04,0 Z"/><path id="pE" d="M793.44,252.1 a244.1,244.1 0 1 0 488.2,0 a244.1,244.1 0 1 0 -488.2,0 Z M938.08,187.65 A118.52,118.52 0 0 1 1137,187.65 Z M934.98,311.5 A118.52,118.52 0 0 0 1125.18,331.88 L1246.16,378.84 A244.1,244.1 0 0 0 1274.3,311.5 Z"/><path id="pO2" d="M1189.01,252.1 a244.1,244.1 0 1 0 488.2,0 a244.1,244.1 0 1 0 -488.2,0 Z M1314.59,252.1 a118.52,118.52 0 1 0 237.04,0 a118.52,118.52 0 1 0 -237.04,0 Z"/><clipPath id="cC"><use href="#pC"/></clipPath><clipPath id="cO1"><use href="#pO1"/></clipPath><clipPath id="cE"><use href="#pE"/></clipPath><clipPath id="cO2"><use href="#pO2"/></clipPath><mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="1685.21" height="504.2"><rect width="1685.21" height="504.2" fill="#FFF"/><path class="wire" d="M474.46,252.1 H1609.96" fill="none" stroke="#000" stroke-width="14.85"/><g class="pulseFade"><path class="pulse" d="M474.46,252.1 H1609.96" fill="none" stroke="#000" stroke-width="21.53" stroke-linecap="round"/></g><circle class="node n0" cx="474.46" cy="252.1" r="23.16" fill="#000"/><circle class="node n1" cx="1609.96" cy="252.1" r="23.33" fill="#000"/></mask>
+</defs>
+<g mask="url(#cut)"><g class="ltr lE"><use href="#pE" fill="#7199D6"/><g clip-path="url(#cE)"><g class="sweep"><rect x="-500" y="-60" width="480" height="610" fill="url(#sweep)" transform="skewX(-11)"/></g></g></g><g class="ltr lO2"><use href="#pO2" fill="#ECF2FB"/><g clip-path="url(#cO2)"><g class="sweep"><rect x="-500" y="-60" width="480" height="610" fill="url(#sweep)" transform="skewX(-11)"/></g></g></g><g class="ltr lO1"><use href="#pO1" fill="#ECF2FB"/><g clip-path="url(#cO1)"><g class="sweep"><rect x="-500" y="-60" width="480" height="610" fill="url(#sweep)" transform="skewX(-11)"/></g></g></g><g class="ltr lC"><use href="#pC" fill="#ECF2FB"/><g clip-path="url(#cC)"><g class="sweep"><rect x="-500" y="-60" width="480" height="610" fill="url(#sweep)" transform="skewX(-11)"/></g></g></g></g><circle class="fl gl0" cx="474.46" cy="252.1" r="69.48" fill="url(#bloom)"/><circle class="lt lt0" cx="474.46" cy="252.1" r="23.16" fill="#7199D6"/><circle class="fl r10" cx="474.46" cy="252.1" r="23.16" fill="none" stroke="#7199D6" stroke-width="3.2"/><circle class="fl gl1" cx="1609.96" cy="252.1" r="69.99" fill="url(#bloom)"/><circle class="lt lt1" cx="1609.96" cy="252.1" r="23.33" fill="#7199D6"/><circle class="fl r11" cx="1609.96" cy="252.1" r="23.33" fill="none" stroke="#7199D6" stroke-width="3.2"/><circle class="fl r21" cx="1609.96" cy="252.1" r="23.33" fill="none" stroke="#7199D6" stroke-width="3.2"/>
+</svg>

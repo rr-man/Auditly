@@ -1,0 +1,229 @@
+{
+  "agent_speaker": "S0",
+  "speakers": [
+    {
+      "label": "S0",
+      "role": "agent",
+      "name": "Jordan"
+    },
+    {
+      "label": "S1",
+      "role": "caller",
+      "name": "Maria"
+    }
+  ],
+  "transferred": false,
+  "customer": {
+    "name": "Maria",
+    "company": "Harbor Dental",
+    "email": null,
+    "phone": null,
+    "reference": null
+  },
+  "auto_fail": false,
+  "summary": "A short, well-handled hardware fault. The agent greeted professionally, restated the problem, isolated it to the single phone quickly and walked the caller through two logical steps to a fix. Identity verification was light (business name and extension only) and the close skipped the 'anything else?' check and a reference number.",
+  "call_summary": "Jordan at Harbor Dental's front desk called because the phone on extension 101 showed 'No Service' while the other handsets worked. The agent confirmed the fault was limited to that one phone, had the caller reseat the network cable and then power-cycle the handset, after which it re-registered. The call ended with the phone working again.",
+  "sentiment": {
+    "start": "negative",
+    "end": "positive",
+    "overall": "positive"
+  },
+  "call_reasons": [
+    {
+      "category": "no_service",
+      "detail": "Front-desk phone on extension 101 showed No Service while the other handsets worked"
+    },
+    {
+      "category": "hardware",
+      "detail": "Network cable at the wall jack was not pushed in"
+    }
+  ],
+  "items": [
+    {
+      "key": "greeting",
+      "rating": "met",
+      "score": 10,
+      "rationale": "Company, agent name and an offer of help in the opening line.",
+      "evidence": [
+        {
+          "ts": "00:00",
+          "speaker": "S0",
+          "quote": "Thank you for calling SNET Connect support, this is Jordan. How can I help you today?"
+        }
+      ]
+    },
+    {
+      "key": "verification",
+      "rating": "partial",
+      "score": 5,
+      "rationale": "The agent collected the business name and extension but did not confirm an account number, PIN or authorised contact before making an account note.",
+      "evidence": [
+        {
+          "ts": "00:12",
+          "speaker": "S0",
+          "quote": "Can I get the name of the business and the extension number on that phone?"
+        }
+      ]
+    },
+    {
+      "key": "issue_discovery",
+      "rating": "met",
+      "score": 15,
+      "rationale": "The problem was restated back to the caller and scoped to one device with a confirming question.",
+      "evidence": [
+        {
+          "ts": "00:22",
+          "speaker": "S0",
+          "quote": "So if I understand right, the front desk phone at extension 101 shows No Service, and the other phones are working. Is that correct?"
+        }
+      ]
+    },
+    {
+      "key": "troubleshooting",
+      "rating": "met",
+      "score": 20,
+      "rationale": "Logical isolation (power, then cable at the phone, then cable at the wall) from simplest to next-simplest, each step explained.",
+      "evidence": [
+        {
+          "ts": "00:45",
+          "speaker": "S0",
+          "quote": "Could you unplug the network cable from the back of the phone, wait ten seconds, and plug it back in?"
+        },
+        {
+          "ts": "01:10",
+          "speaker": "S0",
+          "quote": "Next, is that cable going into the wall, or into a small switch or the computer?"
+        }
+      ]
+    },
+    {
+      "key": "communication",
+      "rating": "met",
+      "score": 10,
+      "rationale": "Plain language, one instruction at a time, expectations set while waiting for registration.",
+      "evidence": [
+        {
+          "ts": "01:28",
+          "speaker": "S0",
+          "quote": "Give the phone about thirty seconds to register."
+        }
+      ]
+    },
+    {
+      "key": "empathy",
+      "rating": "met",
+      "score": 10,
+      "rationale": "Acknowledged the impact and used the caller's name naturally.",
+      "evidence": [
+        {
+          "ts": "00:12",
+          "speaker": "S0",
+          "quote": "I'm sorry to hear that, Maria. Let's get that sorted."
+        }
+      ]
+    },
+    {
+      "key": "resolution",
+      "rating": "met",
+      "score": 15,
+      "rationale": "Fault fixed on the call and confirmed by a test call; the outcome was documented on the account.",
+      "evidence": [
+        {
+          "ts": "01:40",
+          "speaker": "S0",
+          "quote": "I'll note on the account that extension 101 was offline due to a loose wall-jack connection and is now back in service."
+        }
+      ]
+    },
+    {
+      "key": "closing",
+      "rating": "partial",
+      "score": 5,
+      "rationale": "Polite close, but no recap of what was done, no 'anything else I can help with?', and no reference number offered.",
+      "evidence": [
+        {
+          "ts": "01:51",
+          "speaker": "S0",
+          "quote": "You're welcome. Have a good day, Maria."
+        }
+      ]
+    }
+  ],
+  "strengths": [
+    "Restated the issue and confirmed scope before touching anything.",
+    "Simplest-first troubleshooting, one step at a time, with the reason for each step.",
+    "Verified the fix with a live test call rather than taking 'it looks fine' as done."
+  ],
+  "opportunities": [
+    {
+      "key": "verification",
+      "text": "Confirm an account identifier (account number, PIN or listed contact) before discussing or noting anything on the account, even when the caller is clearly a customer."
+    },
+    {
+      "key": "closing",
+      "text": "Close with a one-line recap ('we found a loose wall-jack cable, phone 101 is back') and an offer of further help."
+    },
+    {
+      "key": "resolution",
+      "text": "Give the caller a ticket or reference number so a repeat fault can be linked to this one."
+    },
+    {
+      "key": "communication",
+      "text": "While the caller checks a cable, say what you are doing on your side ('I'm pulling up the phone's registration status') to avoid dead air."
+    }
+  ],
+  "misses": [
+    {
+      "key": "verification",
+      "text": "Caller identity was not verified against account details before an account note was made."
+    },
+    {
+      "key": "closing",
+      "text": "The agent did not ask whether there was anything else before ending the call."
+    }
+  ],
+  "call_facts": {
+    "identifiers": {
+      "phone": null,
+      "extension": "101",
+      "mac_address": null,
+      "ticket": null,
+      "account": null,
+      "device": "front desk phone",
+      "address": null
+    },
+    "troubleshooting": [
+      {
+        "text": "Confirmed the fault was limited to the front desk phone on extension 101; the other handsets were working.",
+        "result": "scope confirmed as one device",
+        "key": "issue_discovery"
+      },
+      {
+        "text": "Had the caller unplug the network cable from the back of the phone, wait ten seconds and plug it back in.",
+        "result": "still No Service",
+        "key": "troubleshooting"
+      },
+      {
+        "text": "Asked where the cable goes and had the caller check the wall-jack end; it was not pushed in and clicked into place.",
+        "result": "the phone re-registered after about thirty seconds",
+        "key": "troubleshooting"
+      },
+      {
+        "text": "Placed a test call to extension 101 to prove the fix.",
+        "result": "the phone rang and the date and extension showed on the display",
+        "key": "resolution"
+      }
+    ],
+    "discussed": [
+      {
+        "text": "The agent noted on the account that extension 101 was offline because of a loose wall-jack connection and is back in service.",
+        "key": "resolution"
+      },
+      {
+        "text": "No ticket or reference number was given to the caller and no recap or offer of further help closed the call.",
+        "key": "closing"
+      }
+    ],
+    "outcome": "Fixed on the call: the front desk phone on extension 101 is registered and working again; nothing left open."
+  }
+}

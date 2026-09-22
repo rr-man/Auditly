@@ -1,0 +1,26 @@
+# There is no git history here yet. This exists so that the day someone runs
+# `git init`, a live API key does not become the first commit.
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+uploads/
+server.log
+__pycache__/
+*.pyc
+deploy/*.local
+# 0.49.0: the self-signed pair restart.sh generates (and any real certificate dropped in its place)
+tls/
+*.pem
+*.key
+*.crt
+# Two stray names a mis-pasted .env line once created ("uploads       # created mode 700" holding a real
+# recording, and an empty "auditly.db               "): the patterns above miss trailing text, these do not.
+/uploads*/
+/auditly*.db*
+*.log
+# the sample tour clip tests/tour_record.js makes; regenerable, unlinked, 2.7 MB
+docs/auditly-tour.webm

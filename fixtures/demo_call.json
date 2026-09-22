@@ -1,0 +1,180 @@
+{
+  "provider": "demo",
+  "model": "demo",
+  "language": "en",
+  "duration_s": 115.5,
+  "full_text": "Thank you for calling SNET Connect support, this is Jordan. How can I help you today? Hi Jordan, this is Maria from Harbor Dental. Our front desk phone is showing No Service since this morning and we can't take calls. I'm sorry to hear that, Maria. Let's get that sorted. Can I get the name of the business and the extension number on that phone? Harbor Dental, and the extension is 101. Thanks. So if I understand right, the front desk phone at extension 101 shows No Service, and the other phones are working. Is that correct? Yes, the two in the back are fine. It's just this one. Okay, that tells me it's likely local to that phone or its cable rather than the account. Is the phone getting power? Is the screen lit? Yes, the screen is on, it just says No Service in the corner. Got it. Let's start with the simplest thing. Could you unplug the network cable from the back of the phone, wait ten seconds, and plug it back in? Sure, one moment. Okay, it rebooted. It's showing... still No Service. Thanks for trying that. Next, is that cable going into the wall, or into a small switch or the computer? Sometimes the cable gets bumped on the other end. It goes into the wall jack. Let me check... oh, it looks like it wasn't pushed in all the way. I heard it click now. That may well be it. Give the phone about thirty seconds to register. It's showing the extension now and the date came back. Let me try calling the back office... yes, it rings! Excellent, glad we found it. I'll note on the account that extension 101 was offline due to a loose wall-jack connection and is now back in service. Great, thank you so much. You're welcome. Have a good day, Maria. You too, bye.",
+  "utterances": [
+    {
+      "start_s": 0.0,
+      "end_s": 4.2,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "Thank you for calling SNET Connect support, this is Jordan. How can I help you today?",
+      "sentiment_score": 0.2,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 4.5,
+      "end_s": 12.0,
+      "speaker": 1,
+      "confidence": 0.97,
+      "text": "Hi Jordan, this is Maria from Harbor Dental. Our front desk phone is showing No Service since this morning and we can't take calls.",
+      "sentiment_score": -0.6,
+      "sentiment": "negative"
+    },
+    {
+      "start_s": 12.3,
+      "end_s": 18.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "I'm sorry to hear that, Maria. Let's get that sorted. Can I get the name of the business and the extension number on that phone?",
+      "sentiment_score": 0.1,
+      "sentiment": "neutral"
+    },
+    {
+      "start_s": 18.2,
+      "end_s": 22.0,
+      "speaker": 1,
+      "confidence": 0.96,
+      "text": "Harbor Dental, and the extension is 101.",
+      "sentiment_score": -0.4,
+      "sentiment": "negative"
+    },
+    {
+      "start_s": 22.3,
+      "end_s": 30.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "Thanks. So if I understand right, the front desk phone at extension 101 shows No Service, and the other phones are working. Is that correct?",
+      "sentiment_score": 0.1,
+      "sentiment": "neutral"
+    },
+    {
+      "start_s": 30.2,
+      "end_s": 34.0,
+      "speaker": 1,
+      "confidence": 0.97,
+      "text": "Yes, the two in the back are fine. It's just this one.",
+      "sentiment_score": -0.2,
+      "sentiment": "neutral"
+    },
+    {
+      "start_s": 34.3,
+      "end_s": 42.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "Okay, that tells me it's likely local to that phone or its cable rather than the account. Is the phone getting power? Is the screen lit?",
+      "sentiment_score": 0.2,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 42.2,
+      "end_s": 45.0,
+      "speaker": 1,
+      "confidence": 0.97,
+      "text": "Yes, the screen is on, it just says No Service in the corner.",
+      "sentiment_score": 0.0,
+      "sentiment": "neutral"
+    },
+    {
+      "start_s": 45.3,
+      "end_s": 55.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "Got it. Let's start with the simplest thing. Could you unplug the network cable from the back of the phone, wait ten seconds, and plug it back in?",
+      "sentiment_score": 0.1,
+      "sentiment": "neutral"
+    },
+    {
+      "start_s": 55.2,
+      "end_s": 58.0,
+      "speaker": 1,
+      "confidence": 0.95,
+      "text": "Sure, one moment.",
+      "sentiment_score": 0.1,
+      "sentiment": "neutral"
+    },
+    {
+      "start_s": 58.3,
+      "end_s": 70.0,
+      "speaker": 1,
+      "confidence": 0.94,
+      "text": "Okay, it rebooted. It's showing... still No Service.",
+      "sentiment_score": 0.3,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 70.2,
+      "end_s": 80.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "Thanks for trying that. Next, is that cable going into the wall, or into a small switch or the computer? Sometimes the cable gets bumped on the other end.",
+      "sentiment_score": 0.2,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 80.2,
+      "end_s": 88.0,
+      "speaker": 1,
+      "confidence": 0.96,
+      "text": "It goes into the wall jack. Let me check... oh, it looks like it wasn't pushed in all the way. I heard it click now.",
+      "sentiment_score": 0.5,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 88.2,
+      "end_s": 92.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "That may well be it. Give the phone about thirty seconds to register.",
+      "sentiment_score": 0.3,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 92.3,
+      "end_s": 100.0,
+      "speaker": 1,
+      "confidence": 0.96,
+      "text": "It's showing the extension now and the date came back. Let me try calling the back office... yes, it rings!",
+      "sentiment_score": 0.6,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 100.2,
+      "end_s": 108.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "Excellent, glad we found it. I'll note on the account that extension 101 was offline due to a loose wall-jack connection and is now back in service.",
+      "sentiment_score": 0.2,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 108.2,
+      "end_s": 111.0,
+      "speaker": 1,
+      "confidence": 0.97,
+      "text": "Great, thank you so much.",
+      "sentiment_score": 0.7,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 111.2,
+      "end_s": 114.0,
+      "speaker": 0,
+      "confidence": 0.98,
+      "text": "You're welcome. Have a good day, Maria.",
+      "sentiment_score": 0.4,
+      "sentiment": "positive"
+    },
+    {
+      "start_s": 114.2,
+      "end_s": 115.5,
+      "speaker": 1,
+      "confidence": 0.95,
+      "text": "You too, bye.",
+      "sentiment_score": 0.8,
+      "sentiment": "positive"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[Unit]
+Description=Auditly (transcribe + score support calls)
+After=network.target
+
+[Service]
+Type=simple
+User=__USER__
+Group=__USER__
+WorkingDirectory=__APPDIR__
+Environment=AUDITLY_BIND=127.0.0.1
+Environment=AUDITLY_PORT=8084
+ExecStart=/usr/bin/python3 "__APPDIR__/auditly_host.py"
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=__APPDIR__
+
+[Install]
+WantedBy=multi-user.target

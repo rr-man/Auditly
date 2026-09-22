@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960" width="960" height="960" role="img" aria-label="Auditly"><!-- Auditly mark. The suffix is the THEME this file is shown in, as with the wordmark: navy ink for the cream launcher dark mode shows. The stamp plays whenever the image loads. auditly_mark_dark_still.svg is the twin the page swaps in when reduced motion is asked for, because that preference does not reach an SVG drawn inside an &lt;img&gt;. --><style>
+    .s{opacity:0;animation:appear .3s .1s cubic-bezier(.22,1,.36,1) forwards, press .46s 1.05s cubic-bezier(.22,1,.36,1) forwards}
+    .k{fill:none;stroke:#F4821F;stroke-width:8;opacity:0;transform-origin:500px 340px;animation:ring .95s 1.04s cubic-bezier(.22,1,.36,1) forwards}
+    .drop{opacity:0;transform-origin:500px 340px;animation:drop .34s .70s cubic-bezier(.5,0,.75,0) forwards}
+    .squash{transform-origin:500px 340px;animation:squash .42s 1.04s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes appear{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes press{0%{transform:translateY(0)}35%{transform:translateY(12px)}100%{transform:translateY(0)}}
+    @keyframes drop{0%{opacity:0;transform:scale(2.2)}40%{opacity:.9}100%{opacity:1;transform:scale(1)}}
+    @keyframes squash{0%{transform:scale(1)}30%{transform:scale(.9)}100%{transform:scale(1)}}
+    @keyframes ring{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(3.4)}}
+    @media (prefers-reduced-motion:reduce){.s,.drop,.squash{animation:none;opacity:1}.k{animation:none}}
+  </style><g class="s" fill="#0A2342"><rect x="434" y="465" width="92" height="380" rx="11"/></g><circle class="k" cx="500" cy="340" r="60"/><g class="drop"><g class="squash"><polyline points="397,348 469,420 615,256" fill="none" stroke="#F4821F" stroke-width="55" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>
