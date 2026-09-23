@@ -3,6 +3,13 @@
 All notable changes to Auditly (built as L1 Support QA). Format follows Keep a Changelog.
 The top entry's version is what the app shows in its version chip.
 
+## [0.65.1] - 2026-09-23
+
+### Fixed
+- The page is `auditly.html`, and the tests, the working notes and the recorder all read it by that name — but a
+  checkout in which it was renamed to `index.html` on the GitHub website no longer serves a blank error: the server
+  falls back to `index.html` when `auditly.html` is missing.
+
 ## [0.65.0] - 2026-09-23
 
 ### Added

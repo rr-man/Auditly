@@ -1,6 +1,6 @@
 # Auditly
 
-**Version:** 0.65.0 · 2026-09-23 · **[Live demo](https://auditly-demo.onrender.com/)** — no sign-in, sample data, nothing real
+**Version:** 0.65.1 · 2026-09-23 · **[Live demo](https://auditly-demo.onrender.com/)** — no sign-in, sample data, nothing real
 
 An internal tool for the Level 1 support QA team. A reviewer uploads a call
 recording; the tool transcribes it (Deepgram or OpenAI), scores it against the

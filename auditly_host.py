@@ -56,6 +56,8 @@ import dashboard                 # noqa: E402
 import worker                    # noqa: E402
 
 APP_HTML = os.path.join(core.HERE, "auditly.html")
+if not os.path.exists(APP_HTML) and os.path.exists(os.path.join(core.HERE, "index.html")):
+    APP_HTML = os.path.join(core.HERE, "index.html")      # 0.65.1: a checkout where the page was renamed on GitHub still serves
 STARTED_AT = core.now()   # the page is re-read per request, the code is not: /health tells them apart
 COOKIE = "auditly_session"
 CSRF_HEADER = "X-Auditly-CSRF"
