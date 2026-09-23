@@ -3,6 +3,15 @@
 All notable changes to Auditly (built as L1 Support QA). Format follows Keep a Changelog.
 The top entry's version is what the app shows in its version chip.
 
+## [0.66.0] - 2026-09-23
+
+### Added
+- **A static front door for GitHub Pages.** `index.html` at the repository root is a landing page — what Auditly
+  is, a button to the live demo, links to the code and the README, and a plain statement that GitHub Pages
+  serves files only and cannot run the application. The application page stays `auditly.html`, served by the
+  server. Enable Pages on `main` / root and `https://rr-man.github.io/auditly/` shows the landing page instead of
+  an empty sign-in form.
+
 ## [0.65.1] - 2026-09-23
 
 ### Fixed

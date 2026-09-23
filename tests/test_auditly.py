@@ -595,6 +595,11 @@ def run(tmp, env):
           and "AUDITLY_DEMO_NOTE=" in dk and "USER auditly" in dk and "EXPOSE 10000" in dk
           and "runtime: docker" in ry and "plan: free" in ry and "healthCheckPath: /health" in ry and 'value: "1"' in ry and "name: auditly-demo" in ry
           and all(p_ in di for p_ in (".env", "*.db", "uploads", "tls", "*.key", ".git")) and "!.env.example" in di)
+    idx = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+    check("the repository's static front door (0.66.0): index.html is a landing page for GitHub Pages -- links to the live demo and the code, nothing external, and it is not the app",
+          os.path.exists(os.path.join(ROOT, "auditly.html")) and "auditly-demo.onrender.com" in idx and "github.com/rr-man/auditly" in idx
+          and "<script" not in idx and 'href="http' not in idx.replace('href="https://auditly-demo.onrender.com/"', "").replace('href="https://github.com/rr-man/auditly"', "").replace('href="https://github.com/rr-man/auditly#readme"', "")
+          and "GitHub Pages serves files only" in idx and "__APP_VERSION__" not in idx)
     check("flowchart has eight steps and the docs say so",
           flow.count("subgraph ") == 8 and "eight-step flowchart" in readme_txt and "all eight steps" in verify_txt, flow.count("subgraph "))
     # coaching is a step of its own (0.44.0), not a node in the audit: the chart names what the tab does

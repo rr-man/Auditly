@@ -1,6 +1,6 @@
 # Auditly
 
-**Version:** 0.65.1 · 2026-09-23 · **[Live demo](https://auditly-demo.onrender.com/)** — no sign-in, sample data, nothing real
+**Version:** 0.66.0 · 2026-09-23 · **[Live demo](https://auditly-demo.onrender.com/)** — no sign-in, sample data, nothing real
 
 An internal tool for the Level 1 support QA team. A reviewer uploads a call
 recording; the tool transcribes it (Deepgram or OpenAI), scores it against the
@@ -28,7 +28,8 @@ sleeps after 15 idle minutes and takes about half a minute to wake) — so never
 **Deploy your own** from a fork: on [Render](https://render.com) choose New → Blueprint and pick the repository;
 `render.yaml` and the `Dockerfile` do the rest. On Hugging Face Spaces create a Docker Space from the same
 Dockerfile and set `AUDITLY_PORT=7860`. Any Docker host works with `docker build -t auditly . && docker run -p
-10000:10000 auditly`.
+10000:10000 auditly`. GitHub Pages cannot run the app; `index.html` at the root is a static landing page that points
+at the demo, so enabling Pages on `main` shows that rather than an empty sign-in form.
 
 ## Quick start
 

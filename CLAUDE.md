@@ -42,7 +42,7 @@ schema.sql      read the comments at the top before adding a column; `review` = 
                 audit (coaching, final score), `audit` = the security log — do not confuse them; `dispute` = the
                 agent's objection (raised from their emailed link, or recorded by the QA); `dispute_link` = the
                 hashed token behind /dispute/<token>; `coaching_session(_call)`; `kb_document/kb_chunk`
-auditly.html   the whole front end
+auditly.html   the whole front end (served by the host; index.html at the root is only the static GitHub Pages landing page)
 fixtures/       demo_call.json (with per-line sentiment), demo_rubric.md, demo_scorecard.json, demo_kb.md, tone.wav
 static/         mermaid.min.js (Mermaid 11.4.1, MIT) — the only third-party code — the COEO logo
                 (coeo_light.svg / coeo_dark.svg) and the Auditly artwork: the wordmark
@@ -59,7 +59,7 @@ static/         mermaid.min.js (Mermaid 11.4.1, MIT) — the only third-party co
                 page's `AV`), which is what retires the old copy — 0.43.1 was that fix, after the real
                 logo sat unseen on machines that had loaded an earlier build. Anything that looks a file
                 up from one of those URLs must read past the query (see `brand_asset`).
-tests/test_auditly.py   709 checks against a real server, no keys
+tests/test_auditly.py   710 checks against a real server, no keys
 tests/tour_record.js    records Help › Show me around to a .webm with Playwright (not part of the suite; node + playwright needed)
 deploy/         nginx + systemd + install.sh (run by a human with sudo)
 Dockerfile      the public demo image (demo mode, open access forced, 10 MB uploads, non-root); render.yaml is the
