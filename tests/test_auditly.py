@@ -174,6 +174,7 @@ def main():
             print(open(os.path.join(tmp, "server.log")).read()[-4000:])
         shutil.rmtree(tmp, ignore_errors=True)
     open_access_suite()
+    local_access_suite()
     seed_rubric_suite()
     print("\n%d passed, %d failed" % (len(PASSES), len(FAILS)))
     sys.exit(1 if FAILS else 0)
@@ -303,6 +304,65 @@ def seed_rubric_suite():
                 proc.kill()
             log.close()
     finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def local_access_suite():
+    """AUDITLY_OPEN_ACCESS unset (0.64.0): a loopback bind signs its own machine in without a password, a proxied
+    request or a network bind does not."""
+    def boot(port, bind, tag):
+        base = "http://127.0.0.1:%d" % port
+        tmp = tempfile.mkdtemp(prefix="auditly-%s-" % tag)
+        env = dict(os.environ)
+        env.update(AUDITLY_OPEN_ACCESS="",              # an empty variable overrides whatever the host's .env says: "unset" for the server
+                   AUDITLY_DB=os.path.join(tmp, "t.db"), AUDITLY_UPLOAD_DIR=os.path.join(tmp, "up"), AUDITLY_PORT=str(port),
+                   AUDITLY_BIND=bind, AUDITLY_INSECURE_COOKIES="1", AUDITLY_DEMO="1", AUDITLY_DEMO_HISTORY="0", AUDITLY_TLS_PORT="0")
+        log = open(os.path.join(tmp, "server.log"), "w")
+        proc = subprocess.Popen([sys.executable, os.path.join(ROOT, "auditly_host.py"), "--demo"], cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
+        up = False
+        for _ in range(250):
+            try:
+                with urllib.request.urlopen(base + "/health", timeout=2) as r:
+                    up = r.status == 200
+                    break
+            except Exception:
+                time.sleep(0.1)
+        return proc, tmp, base, up
+    proc, tmp, base, up = boot(PORT + 5, "127.0.0.1", "local")
+    try:
+        check("local-access server boots (open access unset, bound to 127.0.0.1)", up)
+        a = Client(base)
+        s, me = a.json("/api/me")
+        check("unset + loopback: this machine's browser is the built-in admin without a password", s == 200 and me.get("email") == "open-access@local" and me.get("open_access") is True, me)
+        s, h = a.json("/api/health")
+        check("health reports the mode as local", s == 200 and h.get("open_access_mode") == "local" and h.get("open_access") is True, h.get("open_access_mode"))
+        req = urllib.request.Request(base + "/api/me", headers={"X-Forwarded-For": "203.0.113.9"})
+        try:
+            with urllib.request.urlopen(req, timeout=5) as r:
+                code = r.status
+        except urllib.error.HTTPError as e:
+            code = e.code
+        check("unset + loopback: a request that came through a proxy must sign in", code == 401, code)
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(5)
+        except Exception:
+            proc.kill()
+        shutil.rmtree(tmp, ignore_errors=True)
+    proc, tmp, base, up = boot(PORT + 6, "0.0.0.0", "net")
+    try:
+        check("network-bound server boots (open access unset, 0.0.0.0)", up)
+        a = Client(base)
+        s, me = a.json("/api/me")
+        s2, h = a.json("/health")                      # the public probe; /api/health itself needs a signed-in user here
+        check("unset + network bind: sign-in required (the only anonymous answer is 401)", s == 401 and s2 == 200 and "email" not in me, (s, s2))
+    finally:
+        proc.terminate()
+        try:
+            proc.wait(5)
+        except Exception:
+            proc.kill()
         shutil.rmtree(tmp, ignore_errors=True)
 
 

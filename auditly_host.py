@@ -205,10 +205,32 @@ def _j(s, default):
 OPEN_ACCESS_EMAIL = "open-access@local"
 
 
-def open_access(c):
-    """AUDITLY_OPEN_ACCESS=1: no sign-in; every visitor acts as one built-in admin.
-    Demo/LAN only -- deploy/install.sh refuses to install with it set."""
-    return c.get("AUDITLY_OPEN_ACCESS") == "1"
+LOCAL_BINDS = ("127.0.0.1", "::1", "localhost")
+PROXY_HEADERS = ("X-Forwarded-For", "X-Forwarded-Host", "X-Real-IP", "Forwarded")
+
+
+def open_access_mode(c):
+    """'on' | 'off' | 'local'. AUDITLY_OPEN_ACCESS=1 forces no sign-in for everyone (the LAN demo link), 0 forces
+    sign-in. Unset -- a fresh checkout (0.64.0) -- is 'local': no sign-in only while the server is bound to this
+    machine alone, where nobody else can reach it; a network bind requires sign-in until 1 is set on purpose."""
+    v = (c.get("AUDITLY_OPEN_ACCESS") or "").strip()
+    if v == "1":
+        return "on"
+    if v == "0":
+        return "off"
+    return "local" if (c.get("AUDITLY_BIND") or "127.0.0.1").strip() in LOCAL_BINDS else "off"
+
+
+def open_access(c, headers=None):
+    """Does this visitor act as the built-in admin without signing in? 'local' mode also refuses a request that
+    arrived through a reverse proxy (nginx adds X-Forwarded-For), because behind a proxy a loopback bind is
+    reachable by the world. deploy/install.sh insists on an explicit 0 as well."""
+    mode = open_access_mode(c)
+    if mode == "on":
+        return True
+    if mode == "off":
+        return False
+    return not (headers is not None and any(h in headers for h in PROXY_HEADERS))
 
 
 def open_access_user(db):
@@ -667,8 +689,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def current_user(self, db):
         u = self.session_user(db)
-        if u is None and open_access(core.cfg()):
-            return open_access_user(db)       # AUDITLY_OPEN_ACCESS=1: every visitor is this user
+        if u is None and open_access(core.cfg(), self.headers):
+            return open_access_user(db)       # open access (forced, or local and not proxied): every visitor is this user
         return u
 
     def session_user(self, db):
@@ -795,7 +817,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             u = self.current_user(db)
             if not u:
                 return self.fail(401, "Not signed in.")
-            return self.json(to_public("user", u, open_access=open_access(c)))
+            return self.json(to_public("user", u, open_access=open_access(c, self.headers)))
         m = re.match(r"^/dispute/(%s)(/data)?$" % DISPUTE_TOKEN, path)
         if m:                                    # the agent's page (0.52.0): a token, never a session
             return self.dispute_data(db, m.group(1)) if m.group(2) else self.serve_dispute(db, m.group(1))
@@ -812,7 +834,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                        "max_upload_mb": core.cfg_int(c, "AUDITLY_MAX_UPLOAD_MB", 200),
                        "retention_days": core.cfg_int(c, "AUDITLY_RETENTION_DAYS", 0),
                        "ffmpeg": bool(_which("ffmpeg")), "queue": worker.JOBQ.qsize(),
-                       "open_access": open_access(c), "spend": self._spend(db),
+                       "open_access": open_access(c, self.headers), "open_access_mode": open_access_mode(c), "spend": self._spend(db),
                        "ask": self._ask_status(db, c), "tls_url": self._tls_url(c),
                        "legacy_keys": core.legacy_keys(),
                        "kb_docs": db.execute("SELECT COUNT(*) c FROM kb_document WHERE enabled=1 AND deleted_at IS NULL").fetchone()["c"],
@@ -3267,7 +3289,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if not s["scheduled_at"]:
                 return self.fail(409, "Schedule the session first; the calendar event needs a time.")
             body = coaching.ics(dict(s), agent_email=out.get("agent_email"),
-                                organizer_email=None if open_access(core.cfg()) else u["email"])
+                                organizer_email=None if open_access(core.cfg(), self.headers) else u["email"])
             return self.send(200, body, "text/calendar; charset=utf-8", {"Content-Disposition": 'attachment; filename="%s.ics"' % name})
         p = pdfgen.Pdf("Coaching session - %s" % s["agent_name"])
         p.text("Coaching session: %s" % s["agent_name"], 16, bold=True, gap_after=2)
@@ -4495,9 +4517,13 @@ def main():
     if c.get("AUDITLY_INSECURE_COOKIES") == "1":
         log("WARNING: AUDITLY_INSECURE_COOKIES=1 -- cookies are sent without the Secure flag. "
             "Acceptable on localhost only.")
-    if open_access(c):
+    if open_access_mode(c) == "on":
         log("OPEN ACCESS: AUDITLY_OPEN_ACCESS=1 -- no sign-in; every visitor acts as %s (admin). "
             "Not for real recordings." % OPEN_ACCESS_EMAIL)
+    elif open_access_mode(c) == "local":
+        log("OPEN ACCESS (local): AUDITLY_OPEN_ACCESS is unset and the server is bound to this machine alone, so its "
+            "own browser signs in as %s (admin) without a password; a request through a proxy still needs an "
+            "account. AUDITLY_OPEN_ACCESS=0 requires sign-in here too." % OPEN_ACCESS_EMAIL)
     st = llm.provider_status(c)
     if not st["demo"]:
         if not st["allow_spend"]:

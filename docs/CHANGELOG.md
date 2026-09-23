@@ -3,6 +3,17 @@
 All notable changes to Auditly (built as L1 Support QA). Format follows Keep a Changelog.
 The top entry's version is what the app shows in its version chip.
 
+## [0.64.0] - 2026-09-23
+
+### Changed
+- **No sign-in page on a fresh checkout — while nobody else can reach it.** `AUDITLY_OPEN_ACCESS` now has
+  three states: `1` (no sign-in for everyone, the LAN demo link), `0` (sign-in always), and **unset**, which a
+  new checkout has: the server's own machine signs in as the built-in admin without a password as long as the
+  server is bound to this machine alone (`AUDITLY_BIND=127.0.0.1`, the default) and the request did not come
+  through a proxy. Bind to a network address, or put nginx in front, and the sign-in page is back until `1` is
+  set on purpose. `/api/health` reports the mode; the boot log says which applies; `deploy/install.sh` refuses
+  to install unless `.env` says `0` explicitly, because nginx proxies to loopback.
+
 ## [0.63.2] - 2026-09-22
 
 ### Added

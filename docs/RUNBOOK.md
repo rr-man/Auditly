@@ -165,11 +165,13 @@ Requires in `.env`: `AUDITLY_BIND=0.0.0.0` and `AUDITLY_INSECURE_COOKIES=1`. Bro
 `Secure` cookie over `http://`, so without the second setting login silently fails.
 Passwords and session cookies therefore cross the LAN unencrypted.
 
-**No sign-in:** `AUDITLY_OPEN_ACCESS=1` (set on this host) makes every visitor act as the
-built-in `open-access@local` admin — anyone who can reach port 8084 can upload,
-override, delete and export. The Sign out, Users and password cards are hidden; audit
-rows read `open-access@local`. A real login still works and takes precedence. Set it
-back to `0` (takes effect on the next request, no restart) to require sign-in again.
+**No sign-in:** three states of `AUDITLY_OPEN_ACCESS` (0.64.0). `1` (set on this host) makes every
+visitor act as the built-in admin `open-access@local` on any bind -- the LAN demo link. `0` requires
+sign-in always. **Unset** -- what a fresh checkout has -- means no sign-in only while the server is bound to
+this machine alone (`AUDITLY_BIND=127.0.0.1`, the default) and the request did not arrive through a proxy;
+bind to a network address, or put nginx in front, and the sign-in page is back until `1` is set on purpose.
+Each takes effect on the next request, no restart. `deploy/install.sh` refuses to install unless it reads an
+explicit `0`.
 
 Acceptable for demo data; for real recordings use §2 (TLS), which refuses to install
 while `AUDITLY_INSECURE_COOKIES=1` or `AUDITLY_OPEN_ACCESS=1`, and while something other

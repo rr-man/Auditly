@@ -1,8 +1,8 @@
 # PRD — Auditly
 
-**Version:** 1.95 · 2026-09-22
+**Version:** 1.96 · 2026-09-23
 **Status:** Living document
-**Reflects application build:** v0.63.2
+**Reflects application build:** v0.64.0
 
 ## 1. Overview
 

@@ -60,6 +60,9 @@ fi
 if grep -q '^AUDITLY_OPEN_ACCESS=1' "$APPDIR/.env"; then
   echo "!!! .env has AUDITLY_OPEN_ACCESS=1 (no sign-in); set it to 0 before serving real recordings." >&2; exit 1
 fi
+if ! grep -q '^AUDITLY_OPEN_ACCESS=0' "$APPDIR/.env"; then
+  echo "!!! .env must say AUDITLY_OPEN_ACCESS=0 explicitly: unset means no sign-in for a loopback bind, and nginx proxies to loopback." >&2; exit 1
+fi
 command -v nginx >/dev/null || { echo "nginx is not installed" >&2; exit 1; }
 
 # ── pre-flight: nothing else may own our ports or server names ────────────

@@ -1,6 +1,6 @@
 # Auditly
 
-**Version:** 0.63.2 · 2026-09-22
+**Version:** 0.64.0 · 2026-09-23
 
 An internal tool for the Level 1 support QA team. A reviewer uploads a call
 recording; the tool transcribes it (Deepgram or OpenAI), scores it against the
@@ -23,7 +23,8 @@ with customer sentiment and call reasons.
 ```bash
 cd Auditly
 python3 auditly_host.py --demo            # no keys, fake providers, seeded sample call
-# open http://127.0.0.1:8084/  and sign in as demo@example.com / demo-demo-demo
+# open http://127.0.0.1:8084/  -- no sign-in while the server is bound to this machine alone
+# (when sign-in is on, the demo account is demo@example.com / demo-demo-demo)
 
 ```
 
@@ -35,7 +36,8 @@ For real use (this is what the LAN link runs):
 cp .env.example .env && chmod 600 .env   # fill in DEEPGRAM_API_KEY and OPENAI_API_KEY,
                                          # set AUDITLY_ALLOW_SPEND=1, generate SESSION_SECRET
 python3 auditly_host.py --seed-rubric       # sample rubric into auditly.db (names: Settings › Names)
-python3 auditly_host.py --add-user you@example.com --role admin   # unless AUDITLY_OPEN_ACCESS=1
+python3 auditly_host.py --add-user you@example.com --role admin   # needed once AUDITLY_BIND is a network address
+                                                                  # (or behind nginx); AUDITLY_OPEN_ACCESS=1 skips sign-in on purpose
 ./restart.sh                             # -> http://<this host>:8084/auditly/  (LAN, plain HTTP)
                                          #    https://<this host>:8444/         (same app; self-signed, so
                                          #    each browser warns once: Advanced -> Proceed. Voice input needs this one)

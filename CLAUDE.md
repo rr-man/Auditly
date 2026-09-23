@@ -59,7 +59,7 @@ static/         mermaid.min.js (Mermaid 11.4.1, MIT) — the only third-party co
                 page's `AV`), which is what retires the old copy — 0.43.1 was that fix, after the real
                 logo sat unseen on machines that had loaded an earlier build. Anything that looks a file
                 up from one of those URLs must read past the query (see `brand_asset`).
-tests/test_auditly.py   701 checks against a real server, no keys
+tests/test_auditly.py   707 checks against a real server, no keys
 tests/tour_record.js    records Help › Show me around to a .webm with Playwright (not part of the suite; node + playwright needed)
 deploy/         nginx + systemd + install.sh (run by a human with sudo)
 ```
@@ -106,6 +106,9 @@ deploy/         nginx + systemd + install.sh (run by a human with sudo)
    browser sends `file` as the body with metadata in the query string. Every
    validation happens *before* the body is read.
 10. **`AUDITLY_OPEN_ACCESS=1` makes every visitor `open-access@local` (admin)** with
+    no sign-in; **unset** (0.64.0) does the same only while `AUDITLY_BIND` is loopback and the request carries
+    no proxy header (`open_access_mode()`: on / off / local), so a fresh checkout has no login page but a
+    network or nginx deployment does; `deploy/install.sh` insists on an explicit `0`. The original rule:
     no sign-in; `deploy/install.sh` refuses to install with it set. Demo/LAN only.
     A real session still wins in `current_user()`.
 11. **Never send Strict-Transport-Security from Python.** Since 0.49.0 the app serves its own HTTPS
