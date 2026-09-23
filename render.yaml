@@ -1,0 +1,23 @@
+# Render Blueprint (0.65.0): the public demo. On render.com: New → Blueprint → pick this repository → Apply.
+# Free instance: it sleeps after 15 minutes without visitors and wakes on the next request (about half a
+# minute), and its disk is ephemeral, so the demo database re-seeds itself fresh after every restart.
+services:
+  - type: web
+    name: auditly-demo
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: AUDITLY_PORT
+        value: "10000"
+      - key: AUDITLY_OPEN_ACCESS
+        value: "1"
+      - key: AUDITLY_DEMO
+        value: "1"
+      - key: AUDITLY_MAX_UPLOAD_MB
+        value: "10"
+      - key: AUDITLY_RETENTION_DAYS
+        value: "1"

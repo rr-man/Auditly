@@ -148,6 +148,7 @@ def main():
     env = dict(os.environ, AUDITLY_DB=os.path.join(tmp, "t.db"), AUDITLY_UPLOAD_DIR=os.path.join(tmp, "up"),
                AUDITLY_PORT=str(PORT), AUDITLY_BIND="127.0.0.1", AUDITLY_INSECURE_COOKIES="1", AUDITLY_DEMO="1",
                AUDITLY_MAX_UPLOAD_MB="30", AUDITLY_OPEN_ACCESS="0",   # pinned: the host's .env may set it
+               AUDITLY_DEMO_NOTE="sandbox note for the banner",
                AUDITLY_DEMO_HISTORY="0",                           # counts below assume the one seeded call
                ASK_ENABLED="1")                                    # the assistant answers here; the real-mode server leaves it off
     for k in ("DEEPGRAM_API_KEY", "OPENAI_API_KEY", "ANTHROPIC_API_KEY"):
@@ -585,6 +586,15 @@ def run(tmp, env):
         tracked = subprocess.run(["git", "-C", ROOT, "ls-files"], capture_output=True, text=True).stdout.split("\n")
         badt = [t for t in tracked if re.search(r"(^|/)\.env(?!\.example)|\.db|^uploads|^tls/|\.log$|\.webm$|\.key$|\.pem$", t)]
         check("repository hygiene: git ignores every secret and data path, and none is tracked", not not_ign and not badt, (not_ign, badt))
+    # ── the public demo (0.65.0): container, blueprint, sandbox note ──
+    dk = open(os.path.join(ROOT, "Dockerfile"), encoding="utf-8").read()
+    ry = open(os.path.join(ROOT, "render.yaml"), encoding="utf-8").read()
+    di = open(os.path.join(ROOT, ".dockerignore"), encoding="utf-8").read()
+    check("public demo: the Dockerfile runs demo mode with open access forced, small uploads, one-day retention, as a non-root user; the Render blueprint is a free docker web service with a health check",
+          "FROM python:3.13-slim" in dk and '"--demo"' in dk and "AUDITLY_OPEN_ACCESS=1" in dk and "AUDITLY_MAX_UPLOAD_MB=10" in dk and "AUDITLY_RETENTION_DAYS=1" in dk
+          and "AUDITLY_DEMO_NOTE=" in dk and "USER auditly" in dk and "EXPOSE 10000" in dk
+          and "runtime: docker" in ry and "plan: free" in ry and "healthCheckPath: /health" in ry and 'value: "1"' in ry and "name: auditly-demo" in ry
+          and all(p_ in di for p_ in (".env", "*.db", "uploads", "tls", "*.key", ".git")) and "!.env.example" in di)
     check("flowchart has eight steps and the docs say so",
           flow.count("subgraph ") == 8 and "eight-step flowchart" in readme_txt and "all eight steps" in verify_txt, flow.count("subgraph "))
     # coaching is a step of its own (0.44.0), not a node in the audit: the chart names what the tab does
@@ -1640,6 +1650,10 @@ def run(tmp, env):
     check("audio bad range 416", s == 416)
     s, t = c.json("/api/recordings/%s/transcript" % rec)
     check("transcript endpoint", s == 200 and len(t.get("utterances", [])) == 19)
+    s, hd = c.json("/api/health")
+    check("public demo: AUDITLY_DEMO_NOTE reaches /api/health as demo_note and the page appends it to the demo banner",
+          s == 200 and hd.get("demo_note") == "sandbox note for the banner" and 'if (h.demo && h.demo_note) $("demoBanner").textContent += " " + h.demo_note;' in html
+          and "AUDITLY_DEMO_NOTE" in open(os.path.join(ROOT, ".env.example"), encoding="utf-8").read())
 
     # ── rubrics ───────────────────────────────────────────────────────
     s, rb = c.json("/api/rubrics")

@@ -1,6 +1,6 @@
 # Auditly
 
-**Version:** 0.64.0 · 2026-09-23
+**Version:** 0.65.0 · 2026-09-23 · **[Live demo](https://auditly-demo.onrender.com/)** — no sign-in, sample data, nothing real
 
 An internal tool for the Level 1 support QA team. A reviewer uploads a call
 recording; the tool transcribes it (Deepgram or OpenAI), scores it against the
@@ -17,6 +17,18 @@ with customer sentiment and call reasons.
 > but it is a deliberate departure from the sibling tools on this box, which
 > keep everything local. Audio is deleted after `AUDITLY_RETENTION_DAYS`;
 > transcripts and scorecards are kept.
+
+## Try it
+
+The **[live demo](https://auditly-demo.onrender.com/)** is this repository running in demo mode on a free
+host: fake providers, the fictional sample call and history, Ask Auditly answering offline, no keys and no
+sign-in. It is a shared sandbox — everyone is admin and it resets whenever the host restarts (a free instance
+sleeps after 15 idle minutes and takes about half a minute to wake) — so never upload a real call there.
+
+**Deploy your own** from a fork: on [Render](https://render.com) choose New → Blueprint and pick the repository;
+`render.yaml` and the `Dockerfile` do the rest. On Hugging Face Spaces create a Docker Space from the same
+Dockerfile and set `AUDITLY_PORT=7860`. Any Docker host works with `docker build -t auditly . && docker run -p
+10000:10000 auditly`.
 
 ## Quick start
 

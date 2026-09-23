@@ -1,0 +1,21 @@
+# Mirrors .gitignore: a local `docker build` must never carry keys, databases, recordings or certificates.
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+auditly*.db*
+uploads
+uploads*
+tls
+*.pem
+*.key
+*.crt
+*.log
+__pycache__
+*.pyc
+.git
+.vscode
+docs/auditly-tour.webm

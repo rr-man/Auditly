@@ -132,6 +132,22 @@ read from disk on every request, so they update without a restart — the Python
 before an upgrade therefore shows the new page but answers its newer actions with **Not found.**;
 `/api/health` reports `started_at` so a stale process can be spotted.
 
+## §7a Public demo on a free host (0.65.0)
+
+The `Dockerfile` at the repository root runs demo mode with open access forced (`AUDITLY_OPEN_ACCESS=1`
+must be explicit on a host, because every request arrives through the host's proxy), fake providers, the
+sample data, Ask Auditly offline, uploads capped at 10 MB and audio kept one day, as a non-root user. Nothing
+in it needs a key; `.dockerignore` keeps `.env`, databases, recordings and certificates out of the image.
+
+- **Render:** sign in with GitHub → New → Blueprint → choose the repository → Apply. `render.yaml` declares a
+  free docker web service named `auditly-demo` with `/health` as the health check and auto-deploy from
+  `main`. The URL is `https://auditly-demo.onrender.com/` unless the name is taken, in which case Render adds
+  a suffix — update the README link once. Free instances sleep after 15 idle minutes and have an ephemeral
+  disk, so the demo database re-seeds fresh after each restart; that is the sandbox's reset.
+- **Hugging Face Spaces:** a Docker Space from the same Dockerfile with `AUDITLY_PORT=7860` in the Space's
+  variables.
+- **Take it down:** delete the service on the host; nothing else references it but the README link.
+
 ## §8 Plain-HTTP LAN link (dev)
 
 ```bash

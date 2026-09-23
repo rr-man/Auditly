@@ -1,8 +1,8 @@
 # PRD — Auditly
 
-**Version:** 1.96 · 2026-09-23
+**Version:** 1.97 · 2026-09-23
 **Status:** Living document
-**Reflects application build:** v0.64.0
+**Reflects application build:** v0.65.0
 
 ## 1. Overview
 
@@ -123,6 +123,7 @@ browser sees passes through `to_public()`.
 
 - **Dev/demo:** `python3 auditly_host.py --demo` on 127.0.0.1:8084.
 - **LAN link (real mode):** `./restart.sh` — real providers, bound to 0.0.0.0:8084, plain HTTP, no nginx, no sign-in (`AUDITLY_OPEN_ACCESS=1`), `@reboot` crontab; `http://qa-server.example.com:8084/auditly/`. `--seed-rubric` for first use seeds the rubric only; names come from Settings › Names, and nothing demo (demo runs, demo data, demo filters) is offered outside demo mode. Runbook §8.
+- **Public demo (0.65.0):** `Dockerfile` + `render.yaml` run demo mode with open access forced on a free host, deployed from the GitHub repository; uploads capped at 10 MB, audio kept a day, `AUDITLY_DEMO_NOTE` on the banner; linked from the README.
 - **Production:** systemd unit + nginx TLS reverse proxy on 8444 / `auditly.example.com`, installed by `deploy/install.sh` (human-run, sudo). Runbook §2.
 
 ## 10. Out of scope (v1)

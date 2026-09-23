@@ -835,6 +835,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                        "retention_days": core.cfg_int(c, "AUDITLY_RETENTION_DAYS", 0),
                        "ffmpeg": bool(_which("ffmpeg")), "queue": worker.JOBQ.qsize(),
                        "open_access": open_access(c, self.headers), "open_access_mode": open_access_mode(c), "spend": self._spend(db),
+                       "demo_note": (c.get("AUDITLY_DEMO_NOTE") or "").strip()[:300] or None,
                        "ask": self._ask_status(db, c), "tls_url": self._tls_url(c),
                        "legacy_keys": core.legacy_keys(),
                        "kb_docs": db.execute("SELECT COUNT(*) c FROM kb_document WHERE enabled=1 AND deleted_at IS NULL").fetchone()["c"],

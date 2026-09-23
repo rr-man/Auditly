@@ -67,6 +67,7 @@ DEFAULTS = {
     "AUDITLY_SYNC_WAIT_S": "120",               # a job waits this long for an in-flight optimisation
     "AUDITLY_STT_SENTIMENT": "0",               # 1 = ask Deepgram for per-line sentiment (text-derived, English, billed per token)
     "AUDITLY_TARGET_PCT": "90",                 # the QA score the Dashboard measures pass rate and the target line against
+    "AUDITLY_DEMO_NOTE": "",                    # 0.65.0: a sentence the demo banner adds (the public sandbox says it is shared and resets)
     # coaching invites by email (mailer.py): unset SMTP_HOST = no sending, .ics download + mailto only
     "SMTP_HOST": "",
     "SMTP_PORT": "587",

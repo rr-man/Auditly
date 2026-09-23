@@ -3,6 +3,17 @@
 All notable changes to Auditly (built as L1 Support QA). Format follows Keep a Changelog.
 The top entry's version is what the app shows in its version chip.
 
+## [0.65.0] - 2026-09-23
+
+### Added
+- **A public live demo, deployed from the repository.** A `Dockerfile` runs Auditly in demo mode with no
+  sign-in — fake providers, the sample call and history, Ask Auditly answering offline, uploads capped at
+  10 MB and audio kept a day — as a non-root user on `python:3.13-slim`; `render.yaml` is a Render Blueprint
+  for a free web service built from it (New → Blueprint → pick the repo), and the same image runs on Hugging
+  Face Spaces or any Docker host. `.dockerignore` keeps `.env`, databases, recordings and certificates out of
+  any image. A new `AUDITLY_DEMO_NOTE` sentence rides the demo banner so a shared sandbox says it is shared
+  and resets. The README carries the Live demo link and a "deploy your own" line; Runbook §7a has the details.
+
 ## [0.64.0] - 2026-09-23
 
 ### Changed

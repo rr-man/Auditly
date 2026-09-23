@@ -1521,6 +1521,7 @@ td.selcol,th.selcol{width:28px;padding-right:0} td.selcol input,th.selcol input{
       if (h.demo && S.me && S.me.role === "admin") $("demoDataCard").classList.remove("hidden");
       if (h.demo && S.upMoreSaved == null) $("upMore").open = true;      // Demo run is in there
       if (h.open_access) $("demoBanner").textContent = "Demo mode — providers are fakes, nothing leaves this machine. Open access: no sign-in on this link.";
+      if (h.demo && h.demo_note) $("demoBanner").textContent += " " + h.demo_note;      // a public sandbox says it is shared and resets (0.65.0)
       var sb = $("spendBanner");
       if (!h.demo && !h.allow_spend) { sb.textContent = "AUDITLY_ALLOW_SPEND is not 1 in .env — uploads are refused until an admin sets it."; sb.classList.remove("hidden"); }
       else sb.classList.add("hidden");
